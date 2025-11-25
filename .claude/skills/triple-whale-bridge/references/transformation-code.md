@@ -523,9 +523,9 @@ interface TripleWhaleOrder {
 // =============================================================================
 
 class GHLToTripleWhaleTransformer {
-  // Comprehensive stage mapping
+  // Comprehensive stage mapping (matches Python implementation exactly)
   private static readonly STAGE_MAPPING: Record<string, string> = {
-    // Lead stages
+    // Lead stages (early funnel)
     "new lead": "lead",
     new: "lead",
     inbound: "lead",
@@ -533,36 +533,50 @@ class GHLToTripleWhaleTransformer {
     "cold lead": "lead",
     contacted: "lead",
     "reached out": "lead",
+    "first touch": "lead",
 
-    // MQL stages
+    // MQL stages (marketing qualified)
     qualified: "mql",
     mql: "mql",
     "marketing qualified": "mql",
     engaged: "mql",
     "warm lead": "mql",
     "hot lead": "mql",
+    "stakeholder identified": "mql",
+    "champion engaged": "mql",
 
-    // SQL stages
+    // SQL stages (sales qualified)
     "sales qualified": "sql",
     sql: "sql",
     "discovery complete": "sql",
     "demo complete": "sql",
     "needs assessed": "sql",
+    "technical evaluation": "sql",
+    poc: "sql",
+    trial: "sql",
 
-    // Demo stages
+    // Demo/meeting stages
     "demo scheduled": "book_demo",
     "demo booked": "book_demo",
     "discovery call": "book_demo",
+    "discovery call scheduled": "book_demo",
     "meeting set": "book_demo",
+    "meeting scheduled": "book_demo",
     "consultation booked": "book_demo",
+    "showing scheduled": "book_demo",
+    "call scheduled": "book_demo",
 
-    // Opportunity stages
+    // Opportunity stages (active deal)
     proposal: "opportunity",
     "proposal sent": "opportunity",
     "quote sent": "opportunity",
     negotiation: "opportunity",
     "contract sent": "opportunity",
     "contract review": "opportunity",
+    "legal review": "opportunity",
+    procurement: "opportunity",
+    "final approval": "opportunity",
+    "under contract": "opportunity",
 
     // Closed stages
     "closed won": "custom",
