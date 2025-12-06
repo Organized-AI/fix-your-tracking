@@ -1,0 +1,12 @@
+# Ignore everything by default
+/*
+
+# But track these directories
+!.gitignore
+!skills/
+!Organized Codebase/
+!BMAD-METHOD/
+!Claude Code Hooks/
+!Organized Agents/
+!logs/
+!README.md
